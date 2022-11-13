@@ -10,7 +10,7 @@ struct Urna{
 
 void Criptografar(char cripto[30])
 {
-//	printf("Cripto = %zu \n", strlen(cripto));
+// Caracteres especiais não serão criptografados...
 	int parada = strlen(cripto);
 	int valor = 0;
 	//Criptografa
@@ -29,7 +29,7 @@ void Criptografar(char cripto[30])
 		}
 		else if (cripto[valor] > 64 && cripto[valor] < 91)
 		{
-			if (cripto[valor] > 117 && cripto[valor] < 91)
+			if (cripto[valor] > 85 && cripto[valor] < 91)
 			{
 				cripto[valor]-=21;
 			}
@@ -40,7 +40,7 @@ void Criptografar(char cripto[30])
 		}
 		else if (cripto[valor] < 58 && cripto[valor] > 47)
 		{
-			if (cripto[valor] > 47 && cripto[valor] < 51)
+			if (cripto[valor] < 51 && cripto[valor] > 47)
 			{
 				cripto[valor]+=7;
 			}
@@ -49,10 +49,6 @@ void Criptografar(char cripto[30])
 				cripto[valor]-=3;
 			}
 		}
-		else
-		{
-			cripto[valor]+=5;
-		}
 		valor++;
 	}
 	printf("\n------------------------\nElemento Criptografado: %s\n------------------------\n", cripto);
@@ -60,9 +56,9 @@ void Criptografar(char cripto[30])
 	//Descriptografa
 	while(valor != -1)
 	{
-		if (cripto[valor] < 102 && cripto[valor] > 96)
+		if (cripto[valor] < 123 && cripto[valor] > 96)
 		{
-			if (cripto[valor] < 123 && cripto[valor] > 117)
+			if (cripto[valor] < 102 && cripto[valor] > 96)
 			{
 				cripto[valor]+=21;
 			}
@@ -71,9 +67,9 @@ void Criptografar(char cripto[30])
 				cripto[valor]-=5;
 			}
 		}
-		else if (cripto[valor] > 64 && cripto[valor] < 91)
+		else if (cripto[valor] < 91 && cripto[valor] > 64)
 		{
-			if (cripto[valor] > 117 && cripto[valor] < 91)
+			if (cripto[valor] < 70 && cripto[valor] > 64)
 			{
 				cripto[valor]+=21;
 			}
@@ -82,9 +78,9 @@ void Criptografar(char cripto[30])
 				cripto[valor]-=5;
 			}
 		}
-		else if (cripto[valor] < 58 && cripto[valor] > 47)
+		else if (cripto[valor] > 47 && cripto[valor] < 58)
 		{
-			if (cripto[valor] > 47 && cripto[valor] < 51)
+			if (cripto[valor] > 54 && cripto[valor] < 58)
 			{
 				cripto[valor]-=7;
 			}
@@ -92,10 +88,6 @@ void Criptografar(char cripto[30])
 			{
 				cripto[valor]+=3;
 			}
-		}
-		else
-		{
-			cripto[valor]-=5;
 		}
 		valor--;
 	}
@@ -146,7 +138,7 @@ void InsereElemento(node *CabecaLista)
 	
 	if(!novo)
 	{
-		printf("\nSem memï¿½ria disponivel\n");
+		printf("\nSem memória disponivel\n");
 		exit(1);
 	}
 		
@@ -183,7 +175,7 @@ void Opcao(int *num, node *CabecaLista)
 			ExibeDescripto(CabecaLista);
 			break;
 		case 0:
-			printf("\n\n------------------------\nSaindo... ------------------------\n\n");
+			printf("\n\n------------------------\nSaindo...\n------------------------\n\n");
 			exit(1);
 			break;
 		default:
