@@ -146,7 +146,7 @@ void InsereElemento(node *CabecaLista)
 	
 	if(!novo)
 	{
-		printf("\nSem memória disponivel\n");
+		printf("\nSem memï¿½ria disponivel\n");
 		exit(1);
 	}
 		
