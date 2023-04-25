@@ -2,18 +2,19 @@
 #include <stdlib.h>
 #include <string.h>
 
+// Listas Duplamente Ligadas ou Listas Duplamente Encadeadas combinado com Criptografia de dados.
 struct Urna{
 	char mensagem[30];
 	struct Urna *anterior;
 	struct Urna *proximo;
-}; typedef struct Urna node;
+}; typedef struct Urna node; // O comando [typedef] dá o apelido "node" para "struct Urna".
 
 void Criptografar(char cripto[30])
 {
 // Caracteres especiais não serão criptografados...
 	int parada = strlen(cripto);
 	int valor = 0;
-	//Criptografa
+	//Criptografa!
 	while(valor != parada)
 	{
 		if (cripto[valor] > 96 && cripto[valor] < 123)
@@ -53,7 +54,7 @@ void Criptografar(char cripto[30])
 	}
 	printf("\n------------------------\nElemento Criptografado: %s\n------------------------\n", cripto);
 	valor--;
-	//Descriptografa
+	//Descriptografa!
 	while(valor != -1)
 	{
 		if (cripto[valor] < 123 && cripto[valor] > 96)
@@ -129,11 +130,10 @@ void ExibeDescripto(node *CabecaLista)
 	}
 }
 
-
 void InsereElemento(node *CabecaLista)
 {
 	printf("\n\n------------------------\n Inserindo...\n------------------------\n\n");
-	node *novo = (node *)malloc(sizeof(node));
+	node *novo = (node *)malloc(sizeof(node)); // Alocando um novo nó
 	node *aux = CabecaLista;
 	
 	if(!novo)
@@ -141,13 +141,10 @@ void InsereElemento(node *CabecaLista)
 		printf("\nSem memória disponivel\n");
 		exit(1);
 	}
-		
 
 	printf("\nInsira Elemento: ");
 	scanf("%s", &novo -> mensagem);
-	
-	
-	
+
 	while(aux -> proximo != NULL)
 	{
 		aux = aux -> proximo;
@@ -157,13 +154,13 @@ void InsereElemento(node *CabecaLista)
 	aux -> proximo = novo;
 }
 
-void Opcao(int *num, node *CabecaLista)
+void Opcao(int *num, node *CabecaLista) // O ponteiro [*num] recebe o valor de endereço da variável [sair]. O ponteiro [*CabecaLista] recebe os valores de [CabecaLista]
 {
 	int onde;
 	printf("\n\n------------------------\nEscolha uma das opcoes:\n\n0. Sair\n1. Insere Elemento na Lista\n2. Exibir Lista Criptografada\n3. Exibir Lista Descriptografada\n------------------------\n\n");
-	scanf("%d", num);
+	scanf("%d", num); // Campo para digitar a opção onde é disparada a função.
 
-	switch(*num)
+	switch(*num) // O ponteiro [*num] pega o valor de de [num] que é o mesmo valor de [sair] e chama a função escolhida.
 	{
 		case 1:
 			InsereElemento(CabecaLista);
@@ -183,18 +180,19 @@ void Opcao(int *num, node *CabecaLista)
 	}
 }
 
-int main()
+int main() // O programa a rodar começa aqui!
 {
-	node *CabecaLista = (node *) malloc(sizeof(node));
-	CabecaLista -> proximo = NULL;
+	node *CabecaLista = (node *) malloc(sizeof(node)); // Aqui é alocada a "Struct Urna" atraves do comando [malloc], e o comando [sizeof] define a quantidade de memária a ser alocada.
+	CabecaLista -> proximo = NULL; // Aqui são definidos os valores de proximo e anterior da "Struct Urna", que é nulo ou [NULL].
 	CabecaLista -> anterior = NULL;
 	printf("\n------------------------\nSeja Bem Vindo(a)!\n------------------------\n");
 	
 	int sair = 1;
 	do
 	{
-		Opcao(&sair, CabecaLista);
+		Opcao(&sair, CabecaLista); // O [&sair] envia o endereço de memário como parâmetro, e o valor do ponteiro de [CabecaLista].
 	} while (sair != 0);
 	
+	free(CabecaLista);
 	return 0;
 }
