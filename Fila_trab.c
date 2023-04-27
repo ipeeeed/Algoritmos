@@ -7,11 +7,11 @@ struct Urna{
 	char mensagem[30];
 	struct Urna *anterior;
 	struct Urna *proximo;
-}; typedef struct Urna node; // O comando [typedef] dá o apelido "node" para "struct Urna".
+}; typedef struct Urna node; // O comando [typedef] da o apelido "node" para "struct Urna".
 
 void Criptografar(char cripto[30])
 {
-// Caracteres especiais não serão criptografados...
+// Caracteres especiais nao serao criptografados...
 	int parada = strlen(cripto);
 	int valor = 0;
 	//Criptografa!
@@ -133,12 +133,12 @@ void ExibeDescripto(node *CabecaLista)
 void InsereElemento(node *CabecaLista)
 {
 	printf("\n\n------------------------\n Inserindo...\n------------------------\n\n");
-	node *novo = (node *)malloc(sizeof(node)); // Alocando um novo nó
+	node *novo = (node *)malloc(sizeof(node)); // Alocando um novo node
 	node *aux = CabecaLista;
 	
 	if(!novo)
 	{
-		printf("\nSem memória disponivel\n");
+		printf("\nSem memï¿½ria disponivel\n");
 		exit(1);
 	}
 
@@ -154,13 +154,12 @@ void InsereElemento(node *CabecaLista)
 	aux -> proximo = novo;
 }
 
-void Opcao(int *num, node *CabecaLista) // O ponteiro [*num] recebe o valor de endereço da variável [sair]. O ponteiro [*CabecaLista] recebe os valores de [CabecaLista]
+void Opcao(int *num, node *CabecaLista) // O ponteiro [*num] recebe o valor de endereco da variavel [sair]. O ponteiro [*CabecaLista] recebe os valores de [CabecaLista].
 {
-	int onde;
 	printf("\n\n------------------------\nEscolha uma das opcoes:\n\n0. Sair\n1. Insere Elemento na Lista\n2. Exibir Lista Criptografada\n3. Exibir Lista Descriptografada\n------------------------\n\n");
-	scanf("%d", num); // Campo para digitar a opção onde é disparada a função.
+	scanf("%d", num); // Campo para digitar a opcao onde e disparada a funcao.
 
-	switch(*num) // O ponteiro [*num] pega o valor de de [num] que é o mesmo valor de [sair] e chama a função escolhida.
+	switch(*num) // O ponteiro [*num] pega o valor de de [num] que e o mesmo valor de [sair] e chama a funcao escolhida.
 	{
 		case 1:
 			InsereElemento(CabecaLista);
@@ -180,17 +179,17 @@ void Opcao(int *num, node *CabecaLista) // O ponteiro [*num] recebe o valor de e
 	}
 }
 
-int main() // O programa a rodar começa aqui!
+int main() // O programa a rodar comeca aqui!
 {
-	node *CabecaLista = (node *) malloc(sizeof(node)); // Aqui é alocada a "Struct Urna" atraves do comando [malloc], e o comando [sizeof] define a quantidade de memária a ser alocada.
-	CabecaLista -> proximo = NULL; // Aqui são definidos os valores de proximo e anterior da "Struct Urna", que é nulo ou [NULL].
+	node *CabecaLista = (node *) malloc(sizeof(node)); // Aqui e alocada a "Struct Urna" atraves do comando [malloc], e o comando [sizeof] define a quantidade de memoria a ser alocada.
+	CabecaLista -> proximo = NULL; // Aqui sao definidos os valores de proximo e anterior da "Struct Urna", que e nulo ou [NULL].
 	CabecaLista -> anterior = NULL;
 	printf("\n------------------------\nSeja Bem Vindo(a)!\n------------------------\n");
 	
 	int sair = 1;
 	do
 	{
-		Opcao(&sair, CabecaLista); // O [&sair] envia o endereço de memário como parâmetro, e o valor do ponteiro de [CabecaLista].
+		Opcao(&sair, CabecaLista); // O [&sair] envia o endereco de memorio como parametro, e o valor do ponteiro de [CabecaLista].
 	} while (sair != 0);
 	
 	free(CabecaLista);
