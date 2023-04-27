@@ -3,11 +3,11 @@
 #include <string.h>
 
 // Listas Duplamente Ligadas ou Listas Duplamente Encadeadas combinado com Criptografia de dados.
-struct Urna{
+struct Criptography {
 	char mensagem[30];
-	struct Urna *anterior;
-	struct Urna *proximo;
-}; typedef struct Urna node; // O comando [typedef] da o apelido "node" para "struct Urna".
+	struct Criptography *anterior;
+	struct Criptography *proximo;
+}; typedef struct Criptography node; // O comando [typedef] da o apelido "node" para "struct Criptography".
 
 void Criptografar(char cripto[30])
 {
@@ -161,6 +161,10 @@ void Opcao(int *num, node *CabecaLista) // O ponteiro [*num] recebe o valor de e
 
 	switch(*num) // O ponteiro [*num] pega o valor de de [num] que e o mesmo valor de [sair] e chama a funcao escolhida.
 	{
+		case 0:
+			printf("\n\n------------------------\nSaindo...\n------------------------\n\n");
+			exit(1);
+			break;
 		case 1:
 			InsereElemento(CabecaLista);
 			break;
@@ -170,10 +174,6 @@ void Opcao(int *num, node *CabecaLista) // O ponteiro [*num] recebe o valor de e
 		case 3:
 			ExibeDescripto(CabecaLista);
 			break;
-		case 0:
-			printf("\n\n------------------------\nSaindo...\n------------------------\n\n");
-			exit(1);
-			break;
 		default:
 			printf("\n\n------------------------\nOpcao Invalida!\n------------------------\n\n");
 	}
@@ -181,8 +181,8 @@ void Opcao(int *num, node *CabecaLista) // O ponteiro [*num] recebe o valor de e
 
 int main() // O programa a rodar comeca aqui!
 {
-	node *CabecaLista = (node *) malloc(sizeof(node)); // Aqui e alocada a "Struct Urna" atraves do comando [malloc], e o comando [sizeof] define a quantidade de memoria a ser alocada.
-	CabecaLista -> proximo = NULL; // Aqui sao definidos os valores de proximo e anterior da "Struct Urna", que e nulo ou [NULL].
+	node *CabecaLista = (node *) malloc(sizeof(node)); // Aqui e alocada a "Struct Criptography" atraves do comando [malloc], e o comando [sizeof] define a quantidade de memoria a ser alocada.
+	CabecaLista -> proximo = NULL; // Aqui sao definidos os valores de proximo e anterior da "Struct Criptography", que e nulo ou [NULL].
 	CabecaLista -> anterior = NULL;
 	printf("\n------------------------\nSeja Bem Vindo(a)!\n------------------------\n");
 	
